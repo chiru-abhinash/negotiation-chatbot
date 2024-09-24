@@ -1,7 +1,15 @@
 import openai
 
 # Set your API key for OpenAI
-openai.api_key = 'sk-sYYkGEOZA0tx6ooLBA1JFPCoID3pW6Omjj5EnJ5GSdT3BlbkFJGhunXlJ9QWb8wSyPdIiq-dGSVrNNqP3S9_iOuty3IA'
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env file
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+if OPENAI_API_KEY is None:
+    raise ValueError("The environment variable OPENAI_API_KEY is not set.")
 
 def get_response_from_ai(user_input):
     try:
